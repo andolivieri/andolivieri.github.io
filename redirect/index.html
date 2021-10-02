@@ -4,13 +4,24 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Redirecting </title>
-  <script type="text/javascript"> // <![CDATA[
-    //iPhone Version
-    if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
-      window.location = "https://apps.apple.com/it/app/start-ag/id1517633707";
+  <script type="text/javascript">
+
+    function iOS() {
+      return [
+        'iPad Simulator',
+        'iPhone Simulator',
+        'iPod Simulator',
+        'iPad',
+        'iPhone',
+        'iPod'
+      ].includes(navigator.platform)
+        // iPad on iOS 13 detection
+        || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
     }
-    //Android Version
-    if (navigator.userAgent.match(/android/i)) {
+
+    if (iOS()) {
+      window.location = "https://apps.apple.com/it/app/start-ag/id1517633707";
+    } else if (navigator.userAgent.match(/android/i)) {
       window.location = "https://play.google.com/store/apps/details?id=it.startart.startapp";
     } else {
       window.location = "https://www.startart.it/";
